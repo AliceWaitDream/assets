@@ -64,8 +64,10 @@ done
 if [ "$isSshd" = "true" ]; then
   if [ ! -d "/root/.ssh" ]; then
     mkdir /root/.ssh/
+    chmod 700 /root/.ssh/
   fi
-  cat "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC07eKpk7E+Ti76p+UcmE6YzQ9SoFKmegCBTcKxgX8geUu7UKjxOXqDN7NoKEPmp/W/fsGNiTqg1saPgR/+M7l5fiP3cMr3m+9YLHdtD9dk5UcR51S1y2Miqxa42MlVcvgfP37acSQWLrMqOdZzMg8mtW2q9Em0oKNA4HuLYALIvCWEU7NyeBeALxOfNzG4YpEVlGyl5zC4QJGhxlwvSizo0B4NqFCcyfP7GHZbswRISRLa2ZcXv/O5d4fuLsN1d1ruEZWmIed//20L+P4G6RP4uu4kEm+hFaxF7Z9una1661v4ISRqd11f6Gv0pGepHlhSlBllAcUDBWSx3XpfLPzl+uuA5RrmgkaIoscpOPjHaKuRl94ryHjmhO0KQUvulppUd41ijX4Gi7yao69KuQIMwpmhE9wSTfqDXtG9f3x6G6gcqw8tJL3oOCgnldqJV26/1oDDKpBEUsMg2KXbbdJqFpYh2AYLUfyPnYkPPrcxymJA6c6QBO9TBdls6WJ51mGg6MiRmmIpFSxjYOdmMoCBPR17SnwF+CUaY4oE6ecCPMR93U5kdNVUlI5+u3DHnKsawY1yNX3UxYBw6KxzAu87R4AiivlrBBxF+CHH5xbP/+gTfwwvOyIaXq1WSOG6DOCFVR5ljmLN9G+o542N7BA4f+0w5tTA79NsU20Sd6MK6w== adminuser@localhost" >/root/.ssh/authorized_keys
+  echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC07eKpk7E+Ti76p+UcmE6YzQ9SoFKmegCBTcKxgX8geUu7UKjxOXqDN7NoKEPmp/W/fsGNiTqg1saPgR/+M7l5fiP3cMr3m+9YLHdtD9dk5UcR51S1y2Miqxa42MlVcvgfP37acSQWLrMqOdZzMg8mtW2q9Em0oKNA4HuLYALIvCWEU7NyeBeALxOfNzG4YpEVlGyl5zC4QJGhxlwvSizo0B4NqFCcyfP7GHZbswRISRLa2ZcXv/O5d4fuLsN1d1ruEZWmIed//20L+P4G6RP4uu4kEm+hFaxF7Z9una1661v4ISRqd11f6Gv0pGepHlhSlBllAcUDBWSx3XpfLPzl+uuA5RrmgkaIoscpOPjHaKuRl94ryHjmhO0KQUvulppUd41ijX4Gi7yao69KuQIMwpmhE9wSTfqDXtG9f3x6G6gcqw8tJL3oOCgnldqJV26/1oDDKpBEUsMg2KXbbdJqFpYh2AYLUfyPnYkPPrcxymJA6c6QBO9TBdls6WJ51mGg6MiRmmIpFSxjYOdmMoCBPR17SnwF+CUaY4oE6ecCPMR93U5kdNVUlI5+u3DHnKsawY1yNX3UxYBw6KxzAu87R4AiivlrBBxF+CHH5xbP/+gTfwwvOyIaXq1WSOG6DOCFVR5ljmLN9G+o542N7BA4f+0w5tTA79NsU20Sd6MK6w== adminuser@localhost" >/root/.ssh/authorized_keys
+  chmod 600 /root/.ssh/authorized_keys
 
   # 设定SSH端口为2222
   sed -i 's/^#Port 22/Port 2222/' /etc/ssh/sshd_config
