@@ -22,7 +22,7 @@ isSshd="false"
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -sshd)
-      isShow="true"
+      isSshd="true"
       ;;
     -show)
       isShow="true"
