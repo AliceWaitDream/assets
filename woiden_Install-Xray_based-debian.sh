@@ -8,7 +8,7 @@ if ! command -v apt-get &> /dev/null; then
   exit 1
 fi
 
-public_ipv6=$(ip a | grep -Eo 'inet6 ([0-9a-fA-F]*:){3}[0-9a-fA-F]*' | awk '{print $2}' | grep -v '::1')
+public_ipv6=$(ip a show dev venet0 | grep -Eo 'inet6 ([0-9a-fA-F]*:){3}[0-9a-fA-F]*' | awk '{print $2}')
 destUrl="learn.microsoft.com"
 destPort="443"
 ssPasswd=""
@@ -296,6 +296,6 @@ systemctl restart tor
 if [ "$isShow" = "true" ]; then
 cat >/root/woiden_xray.result<<EOF
 # reality 443port direct
-vless://$uuid_direct@$public_ipv6:443?security=reality&encryption=none&pbk=$publicKey&headerType=none&fp=chrome&spx=%2F&type=tcp&flow=xtls-rprx-vision-udp443&sni=$destUrl&sid=$shortId#woiden
+vless://$uuid_direct@[$public_ipv6]:443?security=reality&encryption=none&pbk=$publicKey&headerType=none&fp=chrome&spx=%2F&type=tcp&flow=xtls-rprx-vision-udp443&sni=$destUrl&sid=$shortId#woiden
 EOF
 fi
